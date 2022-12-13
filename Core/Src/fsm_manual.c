@@ -17,6 +17,7 @@ void fsm_manual_run()
 		Green1_On();
 		if(timer1_flag == 1)
 		{
+			change_mode(0);
 			status1=AUTO_RED_GREEN;
 			set_road1_time(red_time);
 			set_road2_time(green_time);
@@ -35,7 +36,7 @@ void fsm_manual_run()
 		Yellow1_On();
 		if(timer1_flag == 1)
 		{
-
+			change_mode(0);
 			status1=AUTO_RED_YELLOW;
 			set_road1_time(yellow_time);
 			set_road2_time(yellow_time);
@@ -54,6 +55,7 @@ void fsm_manual_run()
 		Green_On();
 		if(timer1_flag == 1)
 		{
+			change_mode(0);
 			status1=AUTO_GREEN_RED;
 			set_road1_time(green_time);
 			set_road2_time(red_time);
@@ -71,6 +73,7 @@ void fsm_manual_run()
 		Yellow_On();
 		if(timer1_flag == 1)
 		{
+			change_mode(0);
 			status1=AUTO_YELLOW_RED;
 			set_road1_time(yellow_time);
 			set_road2_time(yellow_time);

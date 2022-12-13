@@ -27,7 +27,7 @@
 #include "SOFTWARE_TIMER.h"
 #include "scheduler.h"
 #include "fsm_automatic.h"
-//#include "fsm_manual.h"
+#include "fsm_manual.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,6 +66,13 @@ void output_checking()
 	char str[30];
 	int temp = getTimer1();
 	HAL_UART_Transmit(&huart2, str, sprintf(str, "%d\r",temp), 1000);
+}
+
+void change_mode(int index)
+{
+	char arr[3][20] = {"Auto mode","Manual mode", "Tuning mode"};
+	char str[30];
+	HAL_UART_Transmit(&huart2, str, sprintf(str, "Change to %s\r", arr[index]), 1000);
 }
 
 void display_time(int time1, int time2)
@@ -124,20 +131,17 @@ int main(void)
   status1 = 0;
   set_green_time(7000);
   set_yellow_time(3000);
-  set_red_time();
+  set_timeout_duration(3000);
   //adding  tasks======================================================================
   SCH_Add_Task(button_reading, 0, 10);
   SCH_Add_Task(timerRun, 0, 10);
   SCH_Add_Task(fsm_automatic_run, 0, 10);
+  SCH_Add_Task(fsm_manual_run, 0, 10);
   //SCH_Add_Task(output_checking, 0, 1000);
   //SCH_Add_Task(count_down_show, 0, 1000);
   while (1)
   {
 	  SCH_Dispatch_Tasks();
-	  if(button_flag[0] == 1)
-	  {
-		  button_flag[0] = 0;
-	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
