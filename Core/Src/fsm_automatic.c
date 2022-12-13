@@ -20,6 +20,7 @@ void fsm_automatic_run()
 		set_road2_time(green_time);
 		setTimer1(green_time);
 		setTimer2(1000);
+		timer3_flag = 1;
 		break;
 	case AUTO_RED_GREEN:
 		Red_On();
@@ -42,6 +43,14 @@ void fsm_automatic_run()
 			button_flag[1]=0;
 			status1 = MAN_RED_GREEN;
 			setTimer1(timeout_duration);
+		}
+		if(timer3_flag != 1) Redp_On();
+		if(timer3_flag == 1) Reset_p();
+		if(button_flag[3] == 1)
+		{
+			Redp_On();
+			button_flag[3] = 0;
+			setTimer3(10000);
 		}
 		break;
 	case AUTO_RED_YELLOW:
@@ -66,6 +75,14 @@ void fsm_automatic_run()
 			status1 = MAN_RED_YELLOW;
 			setTimer1(timeout_duration);
 		}
+		if(timer3_flag != 1) Redp_On();
+		if(timer3_flag == 1) Reset_p();
+		if(button_flag[3] == 1)
+		{
+			Redp_On();
+			button_flag[3] = 0;
+			setTimer3(10000);
+		}
 		break;
 	case AUTO_GREEN_RED:
 		Red1_On();
@@ -89,6 +106,14 @@ void fsm_automatic_run()
 			status1 = MAN_GREEN_RED;
 			setTimer1(timeout_duration);
 		}
+		if(timer3_flag != 1) Greenp_On();
+		if(timer3_flag == 1) Reset_p();
+		if(button_flag[3] == 1)
+		{
+			Greenp_On();
+			button_flag[3] = 0;
+			setTimer3(10000);
+		}
 		break;
 	case AUTO_YELLOW_RED:
 		Red1_On();
@@ -111,6 +136,14 @@ void fsm_automatic_run()
 			button_flag[1]=0;
 			status1 = MAN_YELLOW_RED;
 			setTimer1(timeout_duration);
+		}
+		if(timer3_flag != 1) Greenp_On();
+		if(timer3_flag == 1) Reset_p();
+		if(button_flag[3] == 1)
+		{
+			Greenp_On();
+			button_flag[3] = 0;
+			setTimer3(10000);
 		}
 		break;
 	default:
