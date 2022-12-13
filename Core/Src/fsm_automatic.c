@@ -36,9 +36,11 @@ void fsm_automatic_run()
 			set_road2_time(yellow_time);
 			setTimer1(yellow_time);
 		}
-		if(button_flag[0] == 1)
+		if(button_flag[1] == 1)
 		{
-
+			button_flag[1]=0;
+			status1 = MAN_RED_GREEN;
+			setTimer1(timeout_duration);
 		}
 		break;
 	case AUTO_RED_YELLOW:
@@ -56,9 +58,12 @@ void fsm_automatic_run()
 			set_road2_time(red_time);
 			setTimer1(green_time);
 		}
-		if(button_flag[0] == 1)
+			if(button_flag[1] == 1)
 		{
 
+			button_flag[1]=0;
+			status1 = MAN_RED_YELLOW;
+			setTimer1(timeout_duration);
 		}
 		break;
 	case AUTO_GREEN_RED:
@@ -76,9 +81,12 @@ void fsm_automatic_run()
 			set_road2_time(yellow_time);
 			setTimer1(yellow_time);
 		}
-		if(button_flag[0] == 1)
+		if(button_flag[1] == 1)
 		{
 
+			button_flag[1]=0;
+			status1 = MAN_GREEN_RED;
+			setTimer1(timeout_duration);
 		}
 		break;
 	case AUTO_YELLOW_RED:
@@ -96,9 +104,12 @@ void fsm_automatic_run()
 			set_road2_time(green_time);
 			setTimer1(green_time);
 		}
-		if(button_flag[0] == 1)
+				if(button_flag[1] == 1)
 		{
 
+			button_flag[1]=0;
+			status1 = MAN_YELLOW_RED;
+			setTimer1(timeout_duration);
 		}
 		break;
 	default:
