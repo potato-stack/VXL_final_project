@@ -13,7 +13,6 @@ void fsm_manual_run()
 	switch(status1)
 	{
 	case MAN_RED_GREEN:
-
 		Green1_On();
 		if(timer1_flag == 1)
 		{
@@ -25,7 +24,6 @@ void fsm_manual_run()
 		}
 		if(button_flag[1] == 1)
 		{
-
 			button_flag[1]=0;
 			status1=MAN_RED_YELLOW;
 			setTimer1(timeout_duration);
@@ -44,7 +42,6 @@ void fsm_manual_run()
 		}
 		if(button_flag[1]  == 1)
 		{
-
 			button_flag[1]=0;
 			status1=MAN_GREEN_RED;
 			setTimer1(timeout_duration);
