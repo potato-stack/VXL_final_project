@@ -20,13 +20,11 @@ int count2 = 0;
 void set_green_time(int time)
 {
 	green_time = time;
+	red_time = green_time + yellow_time;
 }
 void set_yellow_time(int time)
 {
 	yellow_time = time;
-}
-void set_red_time()
-{
 	red_time = green_time + yellow_time;
 }
 void set_timeout_duration(int time)

@@ -38,6 +38,7 @@ void fsm_automatic_run()
 		}
 		if(button_flag[1] == 1)
 		{
+			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_RED_GREEN;
 			setTimer1(timeout_duration);
@@ -60,7 +61,7 @@ void fsm_automatic_run()
 		}
 			if(button_flag[1] == 1)
 		{
-
+			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_RED_YELLOW;
 			setTimer1(timeout_duration);
@@ -83,7 +84,7 @@ void fsm_automatic_run()
 		}
 		if(button_flag[1] == 1)
 		{
-
+			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_GREEN_RED;
 			setTimer1(timeout_duration);
@@ -104,9 +105,9 @@ void fsm_automatic_run()
 			set_road2_time(green_time);
 			setTimer1(green_time);
 		}
-				if(button_flag[1] == 1)
+		if(button_flag[1] == 1)
 		{
-
+			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_YELLOW_RED;
 			setTimer1(timeout_duration);
