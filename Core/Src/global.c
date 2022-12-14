@@ -17,6 +17,7 @@ int count1 = 0;
 int count2 = 0;
 int sound = 0;
 int sound_flag = 0;
+int checking = 0;
 //Function for setting led time
 void set_green_time(int time)
 {

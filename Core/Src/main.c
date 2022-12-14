@@ -95,9 +95,9 @@ void display_time(int time1, int time2)
 	HAL_UART_Transmit(&huart2, str, sprintf(str, "road1: %d road2: %d\r",time1/1000, time2/1000), 1000);
 }
 
-void sound_loud(int frequency){
+void sound_loud(int frequency)
+{
 	__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, frequency);
-//	HAL_Delay(1000);
 }
 
 /* USER CODE END PFP */
@@ -168,11 +168,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   while (1)
   {
-//	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 500);
-//	  HAL_Delay(3000);
-	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 500);
-	  HAL_Delay(3000);
-	  //SCH_Dispatch_Tasks();
+  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

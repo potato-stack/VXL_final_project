@@ -25,7 +25,6 @@
 #define TUNNING_GREEN 			15
 #define TUNNING_YELLOW 			16
 
-
 //===============VARIABLES PART==========================================================================================================
 //-------------------------------------------------status of finate state machine--------------------------------------------------------
 extern int status1;
@@ -40,7 +39,7 @@ extern int red_time;
 extern int yellow_time;
 
 extern int timeout_duration;
-
+extern int checking;
 //-------------------------------------------------UART time display variables--------------------------------------------------------------------
 extern int count1;
 extern int count2;

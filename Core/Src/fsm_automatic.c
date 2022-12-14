@@ -20,24 +20,22 @@ void fsm_automatic_run()
 		set_road2_time(green_time);
 		setTimer1(green_time);
 		setTimer2(1000);
-		setTimer3(1000);
+		set_timeout_duration(5000);
+	    status2 = -14;
 		break;
 	case AUTO_RED_GREEN:
 		Red_On();
 		Green1_On();
-		if(sound_flag == 1) {
-			sound_loud(10000);
-			sound_flag = 0;
-		}
+		sound_loud(10000);
 		if(timer2_flag == 1)
 		{
 			count_down_show();
+			sound_flag = 1;
 			setTimer2(1000);
 		}
 		if(timer1_flag == 1)
 		{
 			status1 = AUTO_RED_YELLOW;
-			status2 = AUTO_RED_YELLOW;
 			set_road1_time(yellow_time);
 			set_road2_time(yellow_time);
 			setTimer1(yellow_time);
@@ -47,7 +45,6 @@ void fsm_automatic_run()
 			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_RED_GREEN;
-			status2 = MAN_RED_GREEN;
 			setTimer1(timeout_duration);
 		}
 		if(button_flag[0]==1){
@@ -58,10 +55,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_RED_GREEN;
-			setTimer3(10000);
+			setTimer3(timeout_duration);
 			button_flag[3] = 0;
+			checking = 1;
 		}
-		if(timer3_flag == 1) status2 = -14;
 		break;
 	case AUTO_RED_YELLOW:
 		Red_On();
@@ -69,12 +66,12 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
+			sound_flag = 1;
 			setTimer2(1000);
 		}
 		if(timer1_flag == 1)
 		{
 			status1 = AUTO_GREEN_RED;
-		    status2 = AUTO_GREEN_RED;
 			set_road1_time(green_time);
 			set_road2_time(red_time);
 			setTimer1(green_time);
@@ -85,20 +82,20 @@ void fsm_automatic_run()
 			status1=TUNNING_GREEN;
 		}
 		if(button_flag[1] == 1)
-			{
+		{
 			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_RED_YELLOW;
 			status2 = MAN_RED_YELLOW;
 			setTimer1(timeout_duration);
-			}
+		}
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_RED_YELLOW;
-			setTimer3(10000);
+			setTimer3(timeout_duration);
 			button_flag[3] = 0;
+			checking = 1;
 		}
-		if(timer3_flag == 1) status2 = -14;
 		break;
 	case AUTO_GREEN_RED:
 		Red1_On();
@@ -106,12 +103,12 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
+			sound_flag = 1;
 			setTimer2(1000);
 		}
 		if(timer1_flag == 1)
 		{
 			status1 = AUTO_YELLOW_RED;
-			status2 = AUTO_YELLOW_RED;
 			set_road1_time(yellow_time);
 			set_road2_time(yellow_time);
 			setTimer1(yellow_time);
@@ -132,10 +129,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_GREEN_RED;
-			setTimer3(10000);
+			setTimer3(timeout_duration);
 			button_flag[3] = 0;
+			checking = 1;
 		}
-		if(timer3_flag == 1) status2 = -14;
 		break;
 	case AUTO_YELLOW_RED:
 		Red1_On();
@@ -143,12 +140,12 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
+			sound_flag = 1;
 			setTimer2(1000);
 		}
 		if(timer1_flag == 1)
 		{
 			status1 = AUTO_RED_GREEN;
-			status2 = AUTO_RED_GREEN;
 			set_road1_time(red_time);
 			set_road2_time(green_time);
 			setTimer1(green_time);
@@ -169,10 +166,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_YELLOW_RED;
-			setTimer3(10000);
+			setTimer3(timeout_duration);
 			button_flag[3] = 0;
+			checking = 1;
 		}
-		if(timer3_flag == 1) status2 = -14;
 		break;
 	default:
 		break;
