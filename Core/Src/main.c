@@ -28,6 +28,7 @@
 #include "scheduler.h"
 #include "fsm_automatic.h"
 #include "fsm_manual.h"
+#include "fsm_pedestrian.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,6 +68,7 @@ void output_checking()
 	int temp = getTimer1();
 	HAL_UART_Transmit(&huart2, str, sprintf(str, "%d\r",temp), 1000);
 }
+
 
 void change_mode(int index)
 {
@@ -126,6 +128,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   //initial state ===================================================================
   Reset();
+  Reset_p();
   SCH_Init();
   setTimer2(10);
   status1 = 0;
@@ -136,6 +139,7 @@ int main(void)
   SCH_Add_Task(button_reading, 0, 10);
   SCH_Add_Task(timerRun, 0, 10);
   SCH_Add_Task(fsm_automatic_run, 0, 10);
+  SCH_Add_Task(fsm_pedestrian, 0, 10);
   SCH_Add_Task(fsm_manual_run, 0, 10);
   //SCH_Add_Task(output_checking, 0, 1000);
   //SCH_Add_Task(count_down_show, 0, 1000);
