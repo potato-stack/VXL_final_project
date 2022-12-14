@@ -46,6 +46,11 @@ void fsm_automatic_run()
 			status2 = MAN_RED_GREEN;
 			setTimer1(timeout_duration);
 		}
+		if(button_flag[0]==1){
+			button_flag[0]=0;
+			change_mode(2);
+			status1=TUNNING_GREEN;
+		}
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_RED_GREEN;
@@ -69,14 +74,19 @@ void fsm_automatic_run()
 			set_road2_time(red_time);
 			setTimer1(green_time);
 		}
-			if(button_flag[1] == 1)
-		{
+		if(button_flag[0]==1){
+			button_flag[0]=0;
+			change_mode(2);
+			status1=TUNNING_GREEN;
+		}
+		if(button_flag[1] == 1)
+			{
 			change_mode(1);
 			button_flag[1]=0;
 			status1 = MAN_RED_YELLOW;
 			status2 = MAN_RED_YELLOW;
 			setTimer1(timeout_duration);
-		}
+			}
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_RED_YELLOW;
@@ -100,6 +110,11 @@ void fsm_automatic_run()
 			set_road2_time(yellow_time);
 			setTimer1(yellow_time);
 		}
+		if(button_flag[0]==1){
+			button_flag[0]=0;
+			change_mode(2);
+			status1=TUNNING_GREEN;
+				}
 		if(button_flag[1] == 1)
 		{
 			change_mode(1);
@@ -131,6 +146,11 @@ void fsm_automatic_run()
 			set_road2_time(green_time);
 			setTimer1(green_time);
 		}
+		if(button_flag[0]==1){
+			button_flag[0]=0;
+			change_mode(2);
+			status1=TUNNING_GREEN;
+				}
 		if(button_flag[1] == 1)
 		{
 			change_mode(1);
