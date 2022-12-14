@@ -32,7 +32,8 @@ extern int status1;
 extern int status2;
 //extern int status3;
 //extern int status4;
-
+extern int sound;
+extern int sound_flag;
 //-------------------------------------------------leds' time variables--------------------------------------------------------------------
 extern int green_time;
 extern int red_time;
