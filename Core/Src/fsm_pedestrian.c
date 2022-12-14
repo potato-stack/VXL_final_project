@@ -36,6 +36,13 @@ void fsm_pedestrian(){
 		break;
 	case AUTO_YELLOW_RED:
 		//Greenp_On();
+		//if(sound_flag == 1) sound_loud(10000);
+		if(count2 <= 3 && sound_flag == 0){
+			sound_loud(0);
+			output_hello();
+			sound_flag = 1;
+		}
+		if(count2 == 1)
 		if(timer3_flag == 1) {
 			Reset_p();
 			status2 = -14;
