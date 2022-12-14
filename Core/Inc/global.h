@@ -22,6 +22,10 @@
 #define MAN_YELLOW_RED			14			//Yellow on first road, red on the second
 
 
+#define TUNNING_GREEN 			15
+#define TUNNING_YELLOW 			16
+
+
 //===============VARIABLES PART==========================================================================================================
 //-------------------------------------------------status of finate state machine--------------------------------------------------------
 extern int status1;
