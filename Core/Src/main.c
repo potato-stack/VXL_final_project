@@ -70,15 +70,16 @@ void output_checking()
 	HAL_UART_Transmit(&huart2, str, sprintf(str, "%d\r",temp), 1000);
 }
 
-void output_hello()
+void output_error()
 {
 	char str[30];
-	HAL_UART_Transmit(&huart2, str, sprintf(str, "Hello\r"), 1000);
+	HAL_UART_Transmit(&huart2, str, sprintf(str, "Error\r"), 1000);
 }
-void output_test(int time)
+void output_time(int index, int time)
 {
 	char str[30];
-	HAL_UART_Transmit(&huart2, str, sprintf(str, "Time: %d\r",time), 1000);
+	char arr[2][20] = {"Green time","Yellow time"};
+	HAL_UART_Transmit(&huart2, str, sprintf(str, "%s: %d\r",arr[index],time/1000), 1000);
 }
 void change_mode(int index)
 {
@@ -154,9 +155,14 @@ int main(void)
   SCH_Add_Task(fsm_tunning_run, 0, 10);
   //SCH_Add_Task(output_checking, 0, 1000);
   //SCH_Add_Task(count_down_show, 0, 1000);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   while (1)
   {
-	  SCH_Dispatch_Tasks();
+//	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 500);
+//	  HAL_Delay(3000);
+	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 500);
+	  HAL_Delay(3000);
+	  //SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
