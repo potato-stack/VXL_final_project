@@ -68,6 +68,13 @@ void output_checking()
 	HAL_UART_Transmit(&huart2, str, sprintf(str, "%d\r",temp), 1000);
 }
 
+void output_hello()
+{
+	char str[30];
+	HAL_UART_Transmit(&huart2, str, sprintf(str, "Hello\r"), 1000);
+}
+
+
 void change_mode(int index)
 {
 	char arr[3][20] = {"Auto mode","Manual mode", "Tuning mode"};

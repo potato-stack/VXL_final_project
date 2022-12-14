@@ -48,6 +48,7 @@ void fsm_automatic_run()
 		if(timer3_flag == 1) Reset_p();
 		if(button_flag[3] == 1)
 		{
+			output_hello();
 			Redp_On();
 			button_flag[3] = 0;
 			setTimer3(10000);
