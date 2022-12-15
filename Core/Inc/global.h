@@ -25,6 +25,9 @@
 #define TUNNING_GREEN 			15
 #define TUNNING_YELLOW 			16
 
+#define WAITING					-1
+//define the value to convert from milisec to sec when displaying or output in terminal
+#define CYCLE 					1000
 //===============VARIABLES PART==========================================================================================================
 //-------------------------------------------------status of finate state machine--------------------------------------------------------
 extern int status1;
@@ -39,6 +42,7 @@ extern int red_time;
 extern int yellow_time;
 
 extern int timeout_duration;
+extern int pedestrian_duration;
 extern int checking;
 //-------------------------------------------------UART time display variables--------------------------------------------------------------------
 extern int count1;
@@ -49,6 +53,7 @@ extern int count2;
 void set_green_time(int time);
 void set_yellow_time(int time);
 void set_timeout_duration(int time);
+void set_pedestrian_duration(int time);
 void set_road1_time(int time);
 void set_road2_time(int time);
 void count_down_show();

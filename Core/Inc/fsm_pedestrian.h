@@ -12,6 +12,9 @@
 #include "SOFTWARE_TIMER.h"
 #include "input_reading.h"
 
+//define for the on off state of pedestrian buzzer
+#define ON 	1000
+#define OFF 0
 void fsm_pedestrian();
 
 #endif /* INC_FSM_PEDESTRIAN_H_ */

@@ -19,19 +19,17 @@ void fsm_automatic_run()
 		set_road1_time(red_time);
 		set_road2_time(green_time);
 		setTimer1(green_time);
-		setTimer2(1000);
-		set_timeout_duration(5000);
-	    status2 = -14;
+		setTimer2(CYCLE);
+	    status2 = WAITING;
 		break;
 	case AUTO_RED_GREEN:
 		Red_On();
 		Green1_On();
-		sound_loud(10000);
 		if(timer2_flag == 1)
 		{
 			count_down_show();
 			sound_flag = 1;
-			setTimer2(1000);
+			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
 		{
@@ -55,9 +53,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_RED_GREEN;
-			setTimer3(timeout_duration);
+			setTimer3(pedestrian_duration);
 			button_flag[3] = 0;
 			checking = 1;
+			setTimer4(20);
 		}
 		break;
 	case AUTO_RED_YELLOW:
@@ -67,7 +66,7 @@ void fsm_automatic_run()
 		{
 			count_down_show();
 			sound_flag = 1;
-			setTimer2(1000);
+			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
 		{
@@ -92,9 +91,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_RED_YELLOW;
-			setTimer3(timeout_duration);
+			setTimer3(pedestrian_duration);
 			button_flag[3] = 0;
 			checking = 1;
+			setTimer4(20);
 		}
 		break;
 	case AUTO_GREEN_RED:
@@ -104,7 +104,7 @@ void fsm_automatic_run()
 		{
 			count_down_show();
 			sound_flag = 1;
-			setTimer2(1000);
+			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
 		{
@@ -129,9 +129,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_GREEN_RED;
-			setTimer3(timeout_duration);
+			setTimer3(pedestrian_duration);
 			button_flag[3] = 0;
 			checking = 1;
+			setTimer4(20);
 		}
 		break;
 	case AUTO_YELLOW_RED:
@@ -141,7 +142,7 @@ void fsm_automatic_run()
 		{
 			count_down_show();
 			sound_flag = 1;
-			setTimer2(1000);
+			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
 		{
@@ -166,9 +167,10 @@ void fsm_automatic_run()
 		if(button_flag[3] == 1)
 		{
 			status2 = AUTO_YELLOW_RED;
-			setTimer3(timeout_duration);
+			setTimer3(pedestrian_duration);
 			button_flag[3] = 0;
 			checking = 1;
+			setTimer4(20);
 		}
 		break;
 	default:

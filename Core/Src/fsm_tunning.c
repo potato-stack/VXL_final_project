@@ -8,6 +8,9 @@
 #include "SOFTWARE_TIMER.h"
 #include "input_reading.h"
 #include "fsm_tunning.h"
+#include "display_control.h"
+
+
 void fsm_tunning_run(){
 	switch (status1){
 	case TUNNING_GREEN:

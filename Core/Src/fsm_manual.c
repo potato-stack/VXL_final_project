@@ -29,6 +29,7 @@ void fsm_manual_run()
 			status2 = MAN_RED_YELLOW;
 			//Set timer3 here to turn off pedestrian led after exit manual mode
 			setTimer3(timeout_duration);
+			//Set timer1 here to exit manual mode when time out
 			setTimer1(timeout_duration);
 		}
 		break;
@@ -38,8 +39,7 @@ void fsm_manual_run()
 		if(timer1_flag == 1)
 		{
 			change_mode(0);
-			//Reset_p();
-			status1=AUTO_RED_YELLOW;
+			status1 = AUTO_RED_YELLOW;
 			set_road1_time(yellow_time);
 			set_road2_time(yellow_time);
 			setTimer1(yellow_time);
