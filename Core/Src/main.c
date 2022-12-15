@@ -92,12 +92,12 @@ void change_mode(int index)
 void display_time(int time1, int time2)
 {
 	char str[50];
-	HAL_UART_Transmit(&huart2, str, sprintf(str, "road1: %d road2: %d\r",time1/1000, time2/1000), 1000);
+	HAL_UART_Transmit(&huart2, str, sprintf(str, "road1: %d road2: %d\r",time1, time2), 1000);
 }
 
-void sound_loud(int frequency){
-	__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, frequency);
-//	HAL_Delay(1000);
+void sound_loud(int frequency)
+{
+		__HAL_TIM_SetCompare (&htim3, TIM_CHANNEL_1, frequency);
 }
 
 /* USER CODE END PFP */
@@ -146,18 +146,17 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   //initial state ===================================================================
-  sound_loud(10000);
   Reset();
   Reset_p();
   SCH_Init();
   setTimer2(10);
   status1 = 0;
-  set_green_time(7000);
-  set_yellow_time(3000);
-  set_timeout_duration(3000);
+  set_green_time(5000);
+  set_yellow_time(5000);
+  set_timeout_duration(20000);
+  set_pedestrian_duration(60000);
   //adding  tasks======================================================================
-  //SCH_Add_Task(sound_loud,0,10);
-  SCH_Add_Task(button_reading, 0, 10);
+  SCH_Add_Task(button_reading, 10, 10);
   SCH_Add_Task(timerRun, 0, 10);
   SCH_Add_Task(fsm_automatic_run, 0, 10);
   SCH_Add_Task(fsm_pedestrian, 0, 10);
@@ -168,11 +167,7 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   while (1)
   {
-//	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 500);
-//	  HAL_Delay(3000);
-	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 500);
-	  HAL_Delay(3000);
-	  //SCH_Dispatch_Tasks();
+  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -273,6 +268,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 0 */
 
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
@@ -285,6 +281,15 @@ static void MX_TIM3_Init(void)
   htim3.Init.Period = 999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
   if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
   {
     Error_Handler();
