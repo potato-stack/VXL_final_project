@@ -19,7 +19,7 @@ void fsm_automatic_run()
 		set_road1_time(red_time);
 		set_road2_time(green_time);
 		setTimer1(green_time);
-		setTimer2(CYCLE);
+		setTimer2(10);
 	    status2 = WAITING;
 		break;
 	case AUTO_RED_GREEN:
@@ -28,7 +28,6 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
-			sound_flag = 1;
 			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
@@ -65,7 +64,7 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
-			sound_flag = 1;
+
 			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
@@ -103,7 +102,7 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
-			sound_flag = 1;
+
 			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)
@@ -141,7 +140,7 @@ void fsm_automatic_run()
 		if(timer2_flag == 1)
 		{
 			count_down_show();
-			sound_flag = 1;
+
 			setTimer2(CYCLE);
 		}
 		if(timer1_flag == 1)

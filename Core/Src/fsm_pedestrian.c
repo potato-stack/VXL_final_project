@@ -42,7 +42,7 @@ void fsm_pedestrian()
 		else Redp_On();
 		break;
 	case AUTO_GREEN_RED:
-		if(count2 <= 10 && timer4_flag == 1)
+		if(count2 <= 5 && timer4_flag == 1)
 		{
 				if(buzz_state == 1)
 				{
@@ -54,7 +54,7 @@ void fsm_pedestrian()
 					sound_loud(OFF);
 					buzz_state = 1;
 				}
-				setTimer4(count2*100);
+				setTimer4(count2*50 + 10);
 		}
 		if(timer3_flag == 1)
 		{
@@ -67,7 +67,7 @@ void fsm_pedestrian()
 		else Greenp_On();
 		break;
 	case AUTO_YELLOW_RED:
-		if(count2<= 10 && timer4_flag == 1)
+		if(count2<= 5 && timer4_flag == 1)
 		{
 				if(buzz_state == 1)
 				{
@@ -79,7 +79,7 @@ void fsm_pedestrian()
 					sound_loud(OFF);
 					buzz_state = 1;
 				}
-				setTimer4(count2*100);
+				setTimer4(count2*50 + 10);
 
 		}
 		if(timer3_flag == 1)
